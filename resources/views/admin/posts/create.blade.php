@@ -9,11 +9,16 @@
         <li class="breadcrumb-item active">新增文章</li>
     </ol>
     <div class="alert alert-danger alert-dismissible" role="alert" id="liveAlert">
-        <strong>錯誤！</strong> 請修正以下問題：
+        @if (count($errors) > 0)
+        <strong>Something went wrong</strong>
+        <br><br>
         <ul>
-            <li>錯誤 1</li>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
         </ul>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        @endif
     </div>
     <form action="/amdin/posts" method="post" role="form">
         @method('POST')
